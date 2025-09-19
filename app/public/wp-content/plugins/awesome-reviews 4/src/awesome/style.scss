@@ -1,0 +1,86 @@
+/* Awesome Reviews — “bottom-bar” slider look */
+
+/* Root & viewport */
+.arw { --gap: 24px; position: relative; margin: 12px 0 8px; }
+.arw .arw-viewport { position: relative; overflow: visible; }
+.arw .arw-wrap {
+  display: grid;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Slider: 2 wide cards desktop, 1 on mobile */
+.arw.arw--layout-slider .arw-wrap {
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  padding: 4px 0 10px;
+}
+@media (min-width: 900px) {
+  .arw.arw--layout-slider .arw-wrap { grid-auto-columns: calc(50% - var(--gap)/2); }
+}
+
+/* Card */
+.arw .arw-card{
+  background:#f3f4f6;
+  border:1px solid #e5e7eb;
+  border-radius:22px;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  padding:24px;
+}
+.arw .arw-head{ display:flex; gap:14px; align-items:center; margin-bottom:10px; }
+.arw .arw-avatar{ width:56px; height:56px; border-radius:999px; object-fit:cover; background:#ddd; display:inline-block; }
+.arw .arw-avatar--local{ background:linear-gradient(135deg,#ff6a3a,#651fff); color:#fff; font-weight:700; display:grid; place-items:center; }
+.arw .arw-author{ font-weight:800; font-size:1.35rem; line-height:1.1; }
+.arw .arw-sub{ font-size:.95rem; color:#6b7280; margin-top:2px; }
+.arw .arw-stars{ color:#FFB400; letter-spacing:1px; }
+.arw .arw-text{ margin:12px 0 8px; font-size:1.15rem; line-height:1.5; max-height:120px; overflow:hidden; }
+.arw .arw-text[data-cut="0"]{ max-height:none; }
+
+/* Read more (only appears when overflowing; JS toggles [hidden]) */
+.arw .arw-more{
+  margin-top:6px;
+  background:transparent; border:0; padding:0;
+  color:#6b7280; font-weight:600; font-size:.95rem; line-height:1.2;
+  text-decoration:none; cursor:pointer; display:inline-block;
+}
+.arw .arw-more:hover, .arw .arw-more:focus-visible{ color:#111; text-decoration:underline; }
+.arw .arw-more[hidden]{ display:none !important; }
+
+/* Provider mark */
+.arw .arw-logo{ display:inline-block; width:12px; height:12px; border-radius:3px; background:#999; margin:0 4px; vertical-align:middle; }
+.arw .arw-logo--google{ background:#4285F4}
+.arw .arw-logo--yelp{ background:#d32323}
+.arw .arw-logo--facebook{ background:#1773ea}
+.arw .arw-provider-name{ margin-left:2px; color:#6b7280 }
+
+/* Overlay arrows */
+.arw .arw-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  z-index:20;
+  width:56px; height:56px; border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#fff; color:#111;
+  cursor:pointer; display:grid; place-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  transition: box-shadow .15s ease, transform .15s ease,
+             background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.arw .arw-nav--prev{ left:-6px; }
+.arw .arw-nav--next{ right:-6px; }
+.arw .arw-nav[disabled]{ opacity:.35; cursor:default; }
+.arw .arw-nav:hover,
+.arw .arw-nav:focus-visible{
+  background:#111; color:#fff; border-color:#111;
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+  transform:translateY(-50%) scale(1.03);
+}
+
+/* Extras */
+.arw.arw--hover .arw-card:hover{ box-shadow:0 12px 24px rgba(0,0,0,.08); transform:translateY(-1px); }
+.arw.arw--align-center{ text-align:center }
+.arw.arw--align-right{ text-align:right }
+.arw .arw-min-note{ margin:4px 0 8px; color:#6b7280; font-size:.9rem }
+
+@media (max-width: 600px){ .arw .arw-nav{ display:none } }

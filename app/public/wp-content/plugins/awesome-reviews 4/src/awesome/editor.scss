@@ -1,0 +1,95 @@
+/* Editor-only Trustindex-like card */
+.arw-editor-card {
+  --ti-border: #e5e7eb;
+  --ti-bg: #fff;
+  --ti-radius: 12px;
+  --ti-shadow: 0 1px 2px rgba(0,0,0,.03);
+
+  background: var(--ti-bg);
+  border: 1px solid var(--ti-border);
+  border-radius: var(--ti-radius);
+  box-shadow: var(--ti-shadow);
+  padding: 24px;
+  margin: 10px 0 26px;
+  max-width: 980px;
+}
+
+.arw-ed-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+
+  .arw-ed-check {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #22c55e; /* green */
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+    flex: 0 0 34px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+}
+
+/* Field group width & spacing like the screenshot */
+.arw-ed-fields {
+  max-width: 720px;
+}
+
+.arw-ed-field {
+  margin-bottom: 14px;
+
+  /* Remove default bottom gaps between WP controls to mimic compact Trustindex look */
+  .components-base-control,
+  .components-base-control__field {
+    margin-bottom: 0;
+  }
+}
+
+/* Big compact select */
+.arw-ed-select .components-select-control__input {
+  height: 48px;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* Big textarea */
+.arw-ed-textarea .components-textarea-control__input {
+  min-height: 110px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* “Connect account” helper line */
+.arw-ed-foot {
+  margin-top: 8px;
+  color: #3c434a;
+  font-size: 13px;
+
+  a {
+    color: #1e40af;
+    text-decoration: underline;
+
+    &:hover { color: #1d4ed8; }
+  }
+}
+
+/* Make labels visually hidden like Trustindex card */
+.arw-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}

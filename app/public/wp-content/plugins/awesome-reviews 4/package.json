@@ -1,0 +1,20 @@
+{
+	"name": "reviews",
+	"version": "1.0.0",
+	"private": true,
+	"description": "WordPress block plugin for Google/Yelp/Facebook reviews",
+	"author": "You",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+	  "start": "wp-scripts start src/awesome --no-clean",
+	  "build": "wp-scripts build src/awesome"
+	},
+	"devDependencies": {
+	  "@wordpress/scripts": "^30.0.0",
+	  "sass": "^1.77.0"
+	},
+	"browserslist": [
+	  "extends @wordpress/browserslist-config"
+	]
+  }
+  

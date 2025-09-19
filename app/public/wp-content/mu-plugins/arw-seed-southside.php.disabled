@@ -1,0 +1,40 @@
+<?php
+/**
+ * Plugin Name: Awesome Reviews – Seed South Care Central Source
+ * Description: Seeds a Saved Source for the Awesome Reviews block (runs once).
+ */
+
+add_action('init', function () {
+    // Run-once guard so it won't keep updating every request
+    if (get_option('arw_seeded_southside')) {
+        return;
+    }
+
+    $GOOGLE_PLACES_API_KEY = 'AIzaSyBuYsjSlRPPGEdcdHbE1q9FPS3TPzQzxPU';
+    $PLACE_ID_OR_MAPS_URL  = 'ChIJo8Wf-WifuokR8YIN_SQSwtg';
+
+    $source = [
+        'id'       => 'southside_google',
+        'provider' => 'google',
+        'label'    => 'South Care Central (Google)',
+        'input'    => $PLACE_ID_OR_MAPS_URL,
+        'api_key'  => $GOOGLE_PLACES_API_KEY,
+    ];
+
+    // Fetch existing list, upsert by id
+    $list  = get_option('awesome_reviews_sources', []);
+    $found = false;
+    foreach ($list as $i => $row) {
+        if (!empty($row['id']) && $row['id'] === $source['id']) {
+            $list[$i] = $source;
+            $found = true;
+            break;
+        }
+    }
+    if (!$found) {
+        $list[] = $source;
+    }
+
+    update_option('awesome_reviews_sources', $list);
+    add_option('arw_seeded_southside', 1);
+});

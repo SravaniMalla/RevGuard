@@ -1,0 +1,26 @@
+{
+	"apiVersion": 2,
+	"name": "awesome/reviews",
+	"title": "Business Reviews",
+	"category": "widgets",
+	"icon": "star-filled",
+	"description": "Show Google / Yelp / Facebook reviews from a saved source.",
+	"supports": { "html": false },
+	"attributes": {
+	  "source": { "type": "string", "default": "" },
+	  "providers": { "type": "array", "default": ["google","yelp","facebook"], "items": { "type": "string" } },
+	  "count": { "type": "number", "default": 6 },
+	  "layout": { "type": "string", "default": "slider" },
+	  "showSource": { "type": "boolean", "default": true },
+	  "minRating": { "type": "number", "default": 1 },
+  
+	  "widgetMode": { "type": "string", "default": "custom" },
+	  "customWidgetId": { "type": "string", "default": "" }
+	},
+  
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"editorStyle": "file:./editor.css"
+  }
+  
